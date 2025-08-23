@@ -1,0 +1,28 @@
+{
+  "name": "zenith-v4",
+  "version": "1.0.0",
+  "description": "Zenith V4 - WhatsApp Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "𝔅𝔯𝔬𝔨𝔢𝔫 𝕊𝕠𝕦𝕩",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.7.10",
+    "awesome-phonenumber": "^5.5.0",
+    "axios": "^1.7.2",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5",
+    "file-type": "^18.7.0",
+    "mime-types": "^2.1.35",
+    "node-cache": "^5.1.2",
+    "pino": "^9.2.0",
+    "wa-sticker-formatter": "^4.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
