@@ -50,6 +50,8 @@ const store = {
     contacts: {},
     chats: {},
     groupMetadata: async (jid) => {
+        // Implement logic to fetch and return group metadata here
+        // This is a placeholder and should be replaced with a real implementation
         return {}
     },
     bind: function(ev) {
@@ -76,11 +78,13 @@ const store = {
         })
     },
     loadMessage: async (jid, id) => {
-        return this.messages[jid]?.[id] || null
+        // Fix: Use a reference to the outer scope's store object
+        // Or better yet, redesign the store to be a class or external module
+        return store.messages[jid]?.[id] || null
     }
 }
 
-let phoneNumber = "255778018545"
+let phoneNumber = "255719632816"
 let owner = JSON.parse(fs.readFileSync('./data/owner.json'))
 
 global.botname = "*𝐙𝐄𝐍𝐈𝐓𝐇-𝐕𝟒* 🎃"
@@ -216,111 +220,13 @@ async function startXeonBotInc() {
             phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 255719632816 (without + or spaces) : `)))
         }
 
-        // Clean the phone number - remove any non-digit characters
-        phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
-
-        // Validate the phone number using awesome-phonenumber
-        const pn = require('awesome-phonenumber');
-        if (!pn('+' + phoneNumber).isValid()) {
-            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 15551234567 for US, 447911123456 for UK, etc.) without + or spaces.'));
-            process.exit(1);
+        // Close the readline interface after getting the number
+        if (rl) {
+            rl.close()
         }
 
-        setTimeout(async () => {
-            try {
-                let code = await XeonBotInc.requestPairingCode(phoneNumber)
-                code = code?.match(/.{1,4}/g)?.join("-") || code
-                console.log(chalk.black(chalk.bgGreen(`Your Pairing Code : `)), chalk.black(chalk.white(code)))
-                console.log(chalk.yellow(`\nPlease enter this code in your WhatsApp app:\n1. Open WhatsApp\n2. Go to Settings > Linked Devices\n3. Tap "Link a Device"\n4. Enter the code shown above`))
-            } catch (error) {
-                console.error('Error requesting pairing code:', error)
-                console.log(chalk.red('Failed to get pairing code. Please check your phone number and try again.'))
-            }
-        }, 3000)
+        const code = await XeonBotInc.pairPhone(phoneNumber)
+        console.log(chalk.bold.rgb(255, 175, 255)('Pairing code:'), chalk.bold.white(code))
     }
-
-    // Connection handling
-    XeonBotInc.ev.on('connection.update', async (s) => {
-        const { connection, lastDisconnect } = s
-        if (connection == "open") {
-            console.log(chalk.magenta(` `))
-            console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
-            
-            const botNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
-            await XeonBotInc.sendMessage(botNumber, { 
-                text: `🤖 Bot Connected Successfully!\n\n⏰ Time: ${new Date().toLocaleString()}\n✅ Status: Online and Ready!
-                \n✅Make sure to join below channel`,
-                contextInfo: {
-                    forwardingScore: 1,
-                    isForwarded: true,
-                    forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363398106360290@newsletter',
-                        newsletterName: '*𝐙𝐄𝐍𝐈𝐓𝐇-𝐕𝟒* 🎃',
-                        serverMessageId: -1
-                    }
-                }
-            });
-
-            await delay(1999)
-            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'SMASH-V1'} ]`)}\n\n`))
-            console.log(chalk.cyan(`< ================================================== >`))
-            console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: SIR LOFT HACKER`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: mrunqiuehacker`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} WA NUMBER: ${owner}`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: MR UNIQUE HACKER`))
-            console.log(chalk.green(`${global.themeemoji || '•'} 🤖 Bot Connected Successfully! ✅`))
-        }
-        if (
-            connection === "close" &&
-            lastDisconnect &&
-            lastDisconnect.error &&
-            lastDisconnect.error.output.statusCode != 401
-        ) {
-            startXeonBotInc()
-        }
-    })
-
-    XeonBotInc.ev.on('creds.update', saveCreds)
+    }
     
-    XeonBotInc.ev.on('group-participants.update', async (update) => {
-        await handleGroupParticipantUpdate(XeonBotInc, update);
-    });
-
-    XeonBotInc.ev.on('messages.upsert', async (m) => {
-        if (m.messages[0].key && m.messages[0].key.remoteJid === 'status@broadcast') {
-            await handleStatus(XeonBotInc, m);
-        }
-    });
-
-    XeonBotInc.ev.on('status.update', async (status) => {
-        await handleStatus(XeonBotInc, status);
-    });
-
-    XeonBotInc.ev.on('messages.reaction', async (status) => {
-        await handleStatus(XeonBotInc, status);
-    });
-
-    return XeonBotInc
-}
-
-
-// Start the bot with error handling
-startXeonBotInc().catch(error => {
-    console.error('Fatal error:', error)
-    process.exit(1)
-})
-process.on('uncaughtException', (err) => {
-    console.error('Uncaught Exception:', err)
-})
-
-process.on('unhandledRejection', (err) => {
-    console.error('Unhandled Rejection:', err)
-})
-
-let file = require.resolve(__filename)
-fs.watchFile(file, () => {
-    fs.unwatchFile(file)
-    console.log(chalk.redBright(`Update ${__filename}`))
-    delete require.cache[file]
-    require(file)
-})
