@@ -24,7 +24,7 @@ async function pingCommand(sock, chatId, message) {
 > Version: ${settings.version || '1.0.0'}
 > Mode: PUBLIC 👥
 ───────────────
-領域展開。隈水。
+いつも一人ぼっち🔥✏️。
 ───────────────
         `.trim();
 
