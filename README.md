@@ -1,7 +1,7 @@
 # 𝐙𝐄𝐍𝐈𝐓𝐇-𝐕𝟒
    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <p align="center"> 
-<u>⚡ A simple WhatsApp User Bot Coded By.      𝐆𝐇𝐎𝐒𝐓 𝐊𝐈𝐍𝐆 ⚡</u>
+<u>⚡ A simple WhatsApp User Bot Coded By.      𝐆𝐇𝐎𝐒𝐓 𝐊𝐈𝐍𝐆  ⚡</u>
 </p>
 <p align="center">
 <img src="https://files.catbox.moe/r26uwc.jpg"/>       
