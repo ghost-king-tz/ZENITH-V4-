@@ -1,12 +1,12 @@
 # 𝐙𝐄𝐍𝐈𝐓𝐇-𝐕𝟒
    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <p align="center"> 
-<u>⚡ A simple WhatsApp User Bot Coded By David Cyril ⚡</u>
+<u>⚡ A simple WhatsApp User Bot Coded By 𝐆𝐇𝐎𝐒𝐓 𝐊𝐈𝐍𝐆 ⚡</u>
 </p>
 <p align="center">
 <img src="https://files.catbox.moe/r26uwc.jpg"/>       
 <p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=+•ZENITH+V4-+V4•;MULTI-DEVICE+WHATSAPP+BOT;DEVELOPED+BY+𝐆𝐇𝐎𝐒𝐓 𝐊𝐈𝐍𝐆;RELEASED+DATE+05%2F12%2F2024." alt="Typing SVG" /></a>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=+•ZENITH+V4-+V4•;MULTI-DEVICE+WHATSAPP+BOT;DEVELOPED+BY+𝐆𝐇𝐎𝐒𝐓 𝐊𝐈𝐍𝐆;RELEASED+DATE+05%2F12%2F2025." alt="Typing SVG" /></a>
 </p> 
 <p align="center">
 <a href="#"><img title="Creator" src="https://img.shields.io/badge/Creator-𝐆𝐇𝐎𝐒𝐓_𝐊𝐈𝐍𝐆-red.svg?style=for-the-badge&logo=github"></a>
